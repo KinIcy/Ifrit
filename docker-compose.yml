@@ -1,4 +1,4 @@
-version: 2
+version: '2'
 services:
   web:
     image: node:8
@@ -9,9 +9,11 @@ services:
     environment: 
       - PORT=$WEB_PORT
     working_dir: /app/
-    liks:
+    links:
       - db
+    tty: true
+    command: 
+      npm install && npm start
   db:
     image: mongo
-    volumes:
-      ./db:/data/db
+    tty: true
