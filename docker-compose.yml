@@ -1,0 +1,17 @@
+version: 2
+services:
+  web:
+    image: node:8
+    volumes: 
+      - ./web:/app/
+    ports: 
+      - "$WEB_PORT:$WEB_PORT"
+    environment: 
+      - PORT=$WEB_PORT
+    working_dir: /app/
+    liks:
+      - db
+  db:
+    image: mongo
+    volumes:
+      ./db:/data/db
