@@ -1,0 +1,4 @@
+#!/bin/bash sh
+
+docker-compose up -d;
+docker-compose logs web;

@@ -13,7 +13,7 @@ services:
       - db
     tty: true
     command: 
-      npm install && npm start
+      npm start
   db:
     image: mongo
     tty: true
