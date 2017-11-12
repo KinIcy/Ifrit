@@ -17,7 +17,7 @@ const profileSchema = new Schema({
   }],
   arrayFollowers: [{
     Type: Schema.Types.ObjectId,
-    ref: 'profile'
+    ref: 'profile',
   }],
 });
 
