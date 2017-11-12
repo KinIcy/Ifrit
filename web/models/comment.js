@@ -7,23 +7,21 @@
 
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
-
-const connection = mongoose.createConnection('mongodb://localhost/myDatabase');
-
 const Schema = mongoose.Schema;
 
-autoIncrement.initialize(connection);
-
 const commentSchema = new Schema({
-  idComment: { type: Number, default: 0, unique: true },
   text: String,
   date: Date,
-  arrayLike: Array,
-  arrayNoLine: Array,
-});
+  arrayLike: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profile',
 
-commentSchema.plugin(autoIncrement, 'idComment');
+  }],
+  arrayNoLike: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profile',
+  }],
+});
 
 const comment = mongoose.model('comment', commentSchema);
 

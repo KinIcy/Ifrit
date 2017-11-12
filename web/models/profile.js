@@ -7,22 +7,19 @@
 
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
-
-const connection = mongoose.createConnection('mongodb://localhost/myDatabase');
-
 const Schema = mongoose.Schema;
 
-autoIncrement.initialize(connection);
-
 const profileSchema = new Schema({
-  idProfile: { type: Number, default: 0, unique: true },
   profileName: String,
-  arrayPublication: Array,
-  arrayProfiles: Array,
+  arrayPublication: [{
+    Type: Schema.Types.ObjectId,
+    ref: 'post',
+  }],
+  arrayFollowers: [{
+    Type: Schema.Types.ObjectId,
+    ref: 'profile'
+  }],
 });
-
-profileSchema.plugin(autoIncrement, 'idProfile');
 
 const profile = mongoose.model('profile', profileSchema);
 

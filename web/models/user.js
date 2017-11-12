@@ -7,16 +7,9 @@
 
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
-
-const connection = mongoose.createConnection('mongodb://localhost/myDatabase');
-
 const Schema = mongoose.Schema;
 
-autoIncrement.initialize(connection);
-
 const userSchema = new Schema({
-  idUser: { type: Number, default: 0, unique: true },
   password: String,
   login: String,
   name: String,
@@ -25,11 +18,15 @@ const userSchema = new Schema({
   sex: String,
   aboutMe: String,
   email: String,
-  personalProfile: Number,
-  anonymousProfile: Number,
+  personalProfile: {
+    Type: Schema.Types.ObjectId,
+    ref: 'profile',
+  },
+  anonymousProfile: {
+    Type: Schema.Types.ObjectId,
+    ref: 'profile',
+  },
 });
-
-userSchema.plugin(autoIncrement, 'idUser');
 
 const user = mongoose.model('user', userSchema);
 
