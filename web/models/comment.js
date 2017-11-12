@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
 autoIncrement.initialize(connection);
 
 const commentSchema = new Schema({
-  idComment: { type: Number, default: 0 },
+  idComment: { type: Number, default: 0, unique: true },
   text: String,
   date: Date,
   arrayLike: Array,

@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
 autoIncrement.initialize(connection);
 
 const postSchema = new Schema({
-  idPublication: { type: Number, default: 0 },
+  idPublication: { type: Number, default: 0, unique: true },
   text: String,
   date: Date,
   arrayComment: Array,
