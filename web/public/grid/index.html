@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<TITLE>Document</TITLE>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-acale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>Registro</h1>
+		</div>	
+	</header>
+	<div class="row"><!--aqui comienzo la contruccion de los formularios-->
+		<div class="container">
+			<form role="form"><!--comienzo a crear todos los formularios sugeridos 	por el grupo de trabajo-->
+			  <div class="form-group col-md-6" >
+			  	<!--cada formulario tiene un typo este es tipo email-->
+			    <label for="ejemplo_email_1">Email*</label>
+			    <input type="email" class="form-control" id="email"
+			           placeholder="Introduce tu email">
+			  </div>
+			  <div class="form-group col-md-6">
+			  	<!--eeste es tipo contraseña-->
+			    <label for="ejemplo_password_1">Contraseña*</label>
+			    <input type="password" class="form-control" id="Contraseña"
+			    placeholder="Contraseña">
+			  </div>
+			  <div class="form-group col-md-6" >
+			  	<!--este es de tipo texto-->
+			    <label for="ejemplo_email_1">Genero*</label>
+			    <input type="text" class="form-control" id="Genero"
+			           placeholder="Genero">
+			  </div>
+			  <div class="form-group col-md-6">
+			    <label for="ejemplo_password_1">Confirmar Contraseña*</label>
+			    <input type="password" class="form-control" id="Confirmar Contraseña"
+			    placeholder="Confirmar Contraseña">
+			  </div>
+			  <div class="form-group col-md-6" >
+			    <label for="ejemplo_email_1">Nombre*</label>
+			    <input type="text" class="form-control" id="Nombre"
+			           placeholder="Introduce tu nombre">
+			  </div>
+			  <div class="form-group col-md-6" >
+			    <label for="ejemplo_email_1">Apellido*</label>
+			    <input type="text" class="form-control" id="Apellido"
+			           placeholder="Introduce tu apellido">
+			  </div>
+			  <div class="form-group col-md-6" >
+			  	<!--este es de tipo fecha-->
+			    <label for="ejemplo_email_1">Fecha Nacimiento*</label>
+			    <input type="date" class="form-control" id="Fecha Nacimiento"
+			           placeholder="Introduce tu fecha">
+			  </div>
+			  <div class="form-group col-md-6" >
+			    <label for="ejemplo_email_1">Nickname*</label>
+			    <input type="text" class="form-control" id="Nickname"
+			           placeholder="Introduce tu Nickname">
+			  </div>
+			  <div class="form-group col-md-12" >
+			    <label for="ejemplo_email_1">Acerca De Mi</label>
+			    <input type="textarea" class="form-control" id="Acerca De Mi"
+			           placeholder="informacion">
+			  <div class="checkbox">
+			    <label>
+			    	<!--aqui es un formulario de casilla para acptar una condicion-->
+			      <input type="checkbox"> Aceptar las politicas 
+			    </label>
+			  </div>
+			  <!--el boton apra finalizar y termianr el registro-->
+			  <button type="submit" class="btn btn-default">Enviar</button>
+			</form>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
