@@ -1,3 +1,8 @@
+/**
+  @author  Edited by : Daniel Hernandez
+  @fileOverview This code represents the routes
+ */
+
 const router = require('express').Router();
 
 const user = require('./user');

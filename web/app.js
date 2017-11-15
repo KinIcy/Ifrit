@@ -1,7 +1,7 @@
 /**
  * @fileOverview Contains the entry point of execution for the server.
- * @version 0.0.1
  * @author Jason Sebastian Lopez
+ * @author Daniel Hernandez Cuero
  */
 
 // include packages required.
@@ -13,7 +13,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const config = require('./config')
+const config = require('./config');
 
 
 // app setup,

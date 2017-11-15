@@ -1,9 +1,8 @@
-/*
-  Author: Juan Sebastian Rivera
-  Date: 11/11/2017
-  Project: Red Social
-  Description: This code represents the MongoDB schema for profile
-*/
+/**
+  @author Juan Sebastian Rivera
+  @author  Edited by : Daniel Hernandez
+  @fileOverview This code represents the MongoDB schema for Profile
+ */
 
 const mongoose = require('mongoose');
 

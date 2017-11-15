@@ -1,4 +1,7 @@
-
+/**
+ * @fileOverview Contains the service for create and decode Tokens
+ * @author Daniel Hernandez Cuero
+ */
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const config = require('../config');

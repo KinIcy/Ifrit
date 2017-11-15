@@ -1,10 +1,11 @@
-/*
-  Author: Juan Sebastian Rivera
-  Date: 11/11/2017
-  Project: Red Social
-  Description: This code represents the MongoDB schema for comments
-*/
+/**
+  @author Juan Sebastian Rivera
+  @author  Edited by : Daniel Hernandez
+  @fileOverview This code represents the MongoDB schema for User
+ */
+
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 const ProfileSchema = require('../models/profile');
 const bcrypt = require('bcrypt-nodejs');
@@ -30,7 +31,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', (next) => {
-  let user = this;
+  const user = this;
   // if ( !user.isModified('password')) return next();
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err);

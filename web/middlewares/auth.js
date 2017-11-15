@@ -1,4 +1,7 @@
-
+/**
+  @author  Daniel Hernandez
+  @fileOverview This code represents the service of Authentication
+ */
 const service = require('../services');
 
 function isAuth(req, res, next) {
