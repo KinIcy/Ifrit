@@ -12,6 +12,9 @@ const router = require('./routes');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const mongoose = require('mongoose');
+const config = require('./config')
+
 
 // app setup,
 const app = express();
@@ -30,6 +33,13 @@ app.use(passport.session());
 // routes setup
 app.use('/api', router);
 
-const listener = app.listen(process.env.PORT || '8080', () => {
-  console.log(`Server Runnig at port ${listener.address().port}`);
+
+mongoose.connect(config.db, (err, res) => {
+  if (err) {
+    return console.log(`Error al conectar a la base de datos: ${err}`);
+  }
+  console.log('Conexión a la base de datos establecida...');
+  const listener = app.listen(process.env.PORT || '8080', () => {
+    console.log(`Servidor corriendo en  ${listener.address().port}`);
+  });
 });

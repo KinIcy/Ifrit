@@ -6,10 +6,11 @@
 */
 
 const mongoose = require('mongoose');
+const CommentSchema = require('../models/comment');
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const PostSchema = new Schema({
   text: String,
   date: Date,
   arrayComment: [{
@@ -31,7 +32,4 @@ const postSchema = new Schema({
   }],
 });
 
-
-const post = mongoose.model('post', postSchema);
-
-module.exports = post;
+module.exports = mongoose.model('Post', PostSchema);

@@ -4,30 +4,42 @@
   Project: Red Social
   Description: This code represents the MongoDB schema for comments
 */
-
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
+const ProfileSchema = require('../models/profile');
+const bcrypt = require('bcrypt-nodejs');
 
-const userSchema = new Schema({
-  password: String,
-  login: String,
+const UserSchema = new Schema({
+  password: { type: String, select: false },
   name: String,
   familyName: String,
   dateOfBirth: Date,
-  sex: String,
+  genre: String,
   aboutMe: String,
-  email: String,
+  email: { type: String, unique: true, lowercase: true },
+  signupDate: { type: Date, default: Date.now() },
+  lastLogin: Date,
   personalProfile: {
-    Type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'profile',
   },
   anonymousProfile: {
-    Type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'profile',
   },
 });
 
-const user = mongoose.model('user', userSchema);
+UserSchema.pre('save', (next) => {
+  let user = this;
+  // if ( !user.isModified('password')) return next();
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, null, (err, hash) => {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
+});
 
-module.exports = user;
+module.exports = mongoose.model('User', UserSchema);

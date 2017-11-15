@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const commentSchema = new Schema({
+const CommentSchema = new Schema({
   text: String,
   date: Date,
   arrayLike: [{
@@ -23,6 +23,4 @@ const commentSchema = new Schema({
   }],
 });
 
-const comment = mongoose.model('comment', commentSchema);
-
-module.exports = comment;
+module.exports = mongoose.model('Comment', CommentSchema);

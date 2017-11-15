@@ -8,19 +8,18 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
+const PostSchema = require('../models/post');
 
-const profileSchema = new Schema({
+const ProfileSchema = new Schema({
   profileName: String,
   arrayPublication: [{
-    Type: Schema.Types.ObjectId,
-    ref: 'post',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
   }],
   arrayFollowers: [{
-    Type: Schema.Types.ObjectId,
-    ref: 'profile',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Profile',
   }],
 });
 
-const profile = mongoose.model('profile', profileSchema);
-
-module.exports = profile;
+module.exports = mongoose.model('Profile', ProfileSchema);
