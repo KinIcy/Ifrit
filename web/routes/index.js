@@ -13,9 +13,11 @@ const comment = require('./comment');
 const auth = require('../middlewares/auth');
 
 router.post('/register', (req, res) =>{
+  console.log(req.body);
   res.send({
     message: `Tu ${req.body.email} usuario ha sido registrado`,
-  })
+  });
+  
 });
 
 router.get('/', (req, res) =>{

@@ -26,7 +26,7 @@
 			    </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Nombre*</label>
-            <input type="text" class="form-control" v-model="inputNombre" id="Nombre" placeholder="Introduce tu nombre">
+            <input type="text" class="form-control" v-model="inputName" id="Nombre" placeholder="Introduce tu nombre">
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Apellido*</label>
@@ -57,11 +57,11 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      inputNombre: '',
-      inputContraseña: '',
+      inputName: '',
       inputPassword: '',
       inputEmail: '',
       inputGenre: '',
@@ -74,8 +74,18 @@ export default {
     }
   },
   methods: {
-    register () {
-      console.log(' register button was clicekd', this.inputNombre)
+    async register () {
+      const response = await AuthenticationService.register({
+        name: this.inputName,
+        password: this.inputPassword,
+        email: this.inputEmail,
+        genre: this.inputGenre,
+        familyName: this.inputFamilyName,
+        date: this.inputDate,
+        nickname: this.inputNickname,
+        aboutMe: this.inputAboutMe
+      })
+      console.log(response.data)
     }
   }
 }
