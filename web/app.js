@@ -26,6 +26,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'averyveryverysecretsecret',
   saveUninitialized: true,
+  resave: true,
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,7 +35,7 @@ app.use(passport.session());
 app.use('/api', router);
 
 
-mongoose.connect(config.db, (err, res) => {
+mongoose.connect(config.db,{ useMongoClient: true }, (err, res) => {
   if (err) {
     return console.log(`Error al conectar a la base de datos: ${err}`);
   }
