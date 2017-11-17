@@ -7,11 +7,9 @@
 // include packages required.
 const express = require('express');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 const router = require('./routes');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const mongoose = require('mongoose');
 const config = require('./config');
 
@@ -23,19 +21,19 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/public`));
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'averyveryverysecretsecret',
-  saveUninitialized: true,
-  resave: true,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  next();
+});
 
 // routes setup
 app.use('/api', router);
 
 
-mongoose.connect(config.db,{ useMongoClient: true }, (err, res) => {
+mongoose.connect(config.db, { useMongoClient: true }, (err) => {
   if (err) {
     return console.log(`Error al conectar a la base de datos: ${err}`);
   }

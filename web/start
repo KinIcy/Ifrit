@@ -1,2 +1,0 @@
-#!/bin/bash sh
-nodemon --exec 'node --inspect=0.0.0.0:5858' app.js
