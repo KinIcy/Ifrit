@@ -1,3 +1,2 @@
 #!/bin/bash sh}
-cd nodes
 docker-compose up;

@@ -44,11 +44,13 @@
             <label for="ejemplo_email_1">Acerca De Mi</label>
             <input type="textarea" class="form-control" v-model="inputAboutMe" id="Acerca De Mi" placeholder="informacion">
           </div>
-          <div class="checkbox">
-			      <label>
-			        <input type="checkbox" v-model="inputCheckBox"> Aceptar las politicas 
-			      </label>
-			    </div>
+          <div class="form-group col-md-12">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="inputCheckBox"> Aceptar las politicas 
+              </label>
+            </div>
+          </div>
 			  <button type="submit" @click="register" class="btn btn-default">Enviar</button>
         </form>
 		  </div>

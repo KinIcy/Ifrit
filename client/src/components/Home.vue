@@ -37,15 +37,6 @@
         </p>
       </div>
     </section>
-    <div class="block bg-primary block-pd-lg block-bg-overlay text-center" data-bg-img="src/img/parallax-bg.jpg" data-settings='{"stellar-background-ratio": 0.6}' data-toggle="parallax-bg">
-      <h2>
-          Welcome to a perfect theme
-      </h2>
-      <p>
-        This is the most powerful theme with thousands of options that you have never seen before.
-      </p>
-      <img alt="Bell - A perfect theme" class="gadgets-img hidden-md-down" src="src/img/gadgets.png">
-    </div>
     <footer class="site-footer">
       <div class="bottom">
         <div class="container">
@@ -575,25 +566,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 700;
 }
 
-/* ==================================================
-  Parallax Styling
-  ================================================== */
-.block {
-  color: #fff;
-  height: 490px;
-  overflow: hidden;
-  padding-top: 85px;
-}
-
-.block h2 {
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.block p {
-  color: #fff;
-  margin-bottom: 45px;
-}
 
 /* ==================================================
   Features Styling
