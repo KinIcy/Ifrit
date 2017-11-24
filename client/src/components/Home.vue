@@ -14,7 +14,7 @@
           <p class="tagline">
             Cualquier opinion puede ser intersante
           </p>
-          <a class="btn btn-full" href="#about">Log-in</a>
+          <a class="btn btn-full" href="#/SignIn">Log-in</a>
           <a class="btn btn-full" href="#/register">Registrarse</a>
         </div>
     </div>

@@ -61,6 +61,7 @@
 <script>
 
 import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
   data () {
     return {
@@ -89,6 +90,7 @@ export default {
         aboutMe: this.inputAboutMe
       })
       console.log(response.data)
+      localStorage.setItem('token', response.data.token)
     }
   }
 }

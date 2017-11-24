@@ -21,6 +21,7 @@ function signUp(req, res) {
 }
 
 function signIn(req, res) {
+  console.log(req);
   User.find({ email: req.body.email }, (err, user) => {
     if (err) return res.status(500).send({ message: err });
     if (!user) return res.status(404).send({ message: 'No existe el usuario' });
@@ -34,23 +35,23 @@ function signIn(req, res) {
 
 function userExist(req, res) {
   if (!req.body.user) {
-    return res.status(400).send();
+    res.status(400).send();
   }
   User.findOne({ user: req.body.user }, (err, user) => {
     if (err) return res.status(500).send({ message: err });
     if (!user) return res.status(200).send({ userExist: false });
-    return res.status(200).send({ userExist: true });
+    res.status(200).send({ userExist: true });
   });
 }
 
 function emailExist(req, res) {
   if (!req.body.email) {
-    return res.status(400).send();
+    res.status(400).send();
   }
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) return res.status(500).send({ message: err });
     if (!user) return res.status(200).send({ emailExist: false });
-    returnres.status(200).send({ emailExist: true });
+    res.status(200).send({ emailExist: true });
   });
 }
 

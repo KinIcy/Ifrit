@@ -5,6 +5,7 @@
 const tokenService = require('./../../helpers/token');
 
 function isAuth(req, res, next) {
+  console.log(req.headers);
   if (!req.headers.authorization) {
     res.status(403).send({ message: 'No tienes autorizacion' });
   } else {
