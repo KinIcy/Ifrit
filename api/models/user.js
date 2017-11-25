@@ -43,4 +43,32 @@ UserSchema.pre('save', (next) => {
   });
 });
 
+/**
+ * Creates a new Profile for the user.
+ * @param {String} name Display name for the profile.
+ * @param {Boolean} [isAnonymous=false] Create an anonymous profile.
+ * @param {Boolean} [overwriteAnonymous=false] Overwrite anonymous profile if
+ * already exists.
+ */
+async function createProfile(name, isAnonymous = false, overwriteAnonymous = false) {
+  if (isAnonymous) {
+    if (this.anonymousProfile !== undefined && !overwriteAnonymous) {
+      throw new Error('User has already an Anonymous profile');
+    }
+  } else if (this.personalProfile !== undefined) {
+    throw new Error('User has already a Personal profile');
+  }
+  try {
+    const profile = await Profile.create({ name });
+    if (isAnonymous) {
+      this.anonymousProfile = profile;
+    } else this.personalProfile = profile;
+    this.save();
+    return;
+  } catch (error) {
+    throw error;
+  }
+}
+UserSchema.methods.createProfile = createProfile;
+
 module.exports = mongoose.model('User', UserSchema);
