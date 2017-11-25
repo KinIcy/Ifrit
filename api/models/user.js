@@ -6,7 +6,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
-const Profile = require('../models/profile');
+const Profile = require('./profile');
 
 const UserSchema = new mongoose.Schema({
   password: { type: String, select: false },

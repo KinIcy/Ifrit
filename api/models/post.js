@@ -1,33 +1,33 @@
 /**
   @author Juan Sebastian Rivera
-  @author  Edited by : Daniel Hernandez
+  @author Edited by : Daniel Hernandez, Jason Lopez
   @fileOverview This code represents the MongoDB schema for Posts
  */
 
 const mongoose = require('mongoose');
-const CommentSchema = require('../models/comment');
 
-const Schema = mongoose.Schema;
-
-const PostSchema = new Schema({
-  text: String,
-  date: Date,
-  arrayComment: [{
+const PostSchema = new mongoose.Schema({
+  content: { type: String, required: true },
+  date: { type: Date, required: true },
+  author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'comment',
+    ref: 'Profile',
+  },
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment',
   }],
-  arrayLike: [{
+  likes: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'profile',
-
+    ref: 'Profile',
   }],
-  arrayNoLike: [{
+  unlikes: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'profile',
+    ref: 'Profile',
   }],
-  arrayFollow: [{
+  followers: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'profile',
+    ref: 'Profile',
   }],
 });
 
