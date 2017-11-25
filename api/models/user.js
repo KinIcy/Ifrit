@@ -1,44 +1,44 @@
 /**
   @author Juan Sebastian Rivera
-  @author  Edited by : Daniel Hernandez
+  @author Edited by : Daniel Hernandez, Jason Lopez
   @fileOverview This code represents the MongoDB schema for User
  */
 
 const mongoose = require('mongoose');
-
-const Schema = mongoose.Schema;
-const ProfileSchema = require('../models/profile');
 const bcrypt = require('bcrypt-nodejs');
+const Profile = require('../models/profile');
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   password: { type: String, select: false },
-  name: String,
-  familyName: String,
-  dateOfBirth: Date,
-  genre: String,
+  name: { type: String, required: true },
+  familyName: { type: String, required: true },
+  dateOfBirth: { type: Date, required: true },
+  genre: { type: String, required: true, validate: /^[mf-]$/i },
   aboutMe: String,
   email: { type: String, unique: true, lowercase: true },
   signupDate: { type: Date, default: Date.now() },
-  lastLogin: Date,
+  lastLogin: { type: Date, default: Date.now() },
   personalProfile: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'profile',
   },
   anonymousProfile: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'profile',
   },
 });
 
+/**
+ * @todo Document me
+ */
 UserSchema.pre('save', (next) => {
-  const user = this;
   // if ( !user.isModified('password')) return next();
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err);
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
+    return bcrypt.hash(this.password, salt, null, (err, hash) => {
       if (err) return next(err);
-      user.password = hash;
-      next();
+      this.password = hash;
+      return next();
     });
   });
 });

@@ -6,16 +6,13 @@
 
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-const PostSchema = require('../models/post');
-
-const ProfileSchema = new Schema({
-  profileName: String,
-  arrayPublication: [{
+const ProfileSchema = new mongoose.Schema({
+  profileName: { type: String, required: true },
+  publications: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
   }],
-  arrayFollowers: [{
+  followers: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profile',
   }],

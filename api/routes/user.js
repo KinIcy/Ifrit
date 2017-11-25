@@ -7,8 +7,8 @@ const User = require('../models/user');
 
 /**
  * @todo Comment me
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 function signUp(req, res) {
   const user = new User({
@@ -29,8 +29,8 @@ function signUp(req, res) {
 
 /**
  * Comment me
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 function signIn(req, res) {
   User.find({ email: req.body.email }, (err, user) => {
@@ -46,8 +46,8 @@ function signIn(req, res) {
 
 /**
  * Comment me
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 function userExist(req, res) {
   if (!req.body.user) return res.status(400).send();
@@ -60,8 +60,8 @@ function userExist(req, res) {
 
 /**
  * @todo Comment me
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 function emailExist(req, res) {
   if (!req.body.email) {
@@ -76,8 +76,8 @@ function emailExist(req, res) {
 
 /**
  * @todo Comment me
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 function getUser(req, res) {
   User.findOne({ user: req.params.user }).then((user) => {
@@ -88,6 +88,7 @@ function getUser(req, res) {
   });
 }
 
+/** @todo add missing routes */
 router.post('/signUp', signUp);
 router.post('/signIn', middlewares.auth, signIn);
 
