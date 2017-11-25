@@ -45,9 +45,9 @@ UserSchema.pre('save', (next) => {
 
 /**
  * Creates a new Profile for the user.
- * @param {String} name Display name for the profile.
- * @param {Boolean} [isAnonymous=false] Create an anonymous profile.
- * @param {Boolean} [overwriteAnonymous=false] Overwrite anonymous profile if
+ * @param {String} name - Display name for the profile.
+ * @param {Boolean} [isAnonymous=false] - Create an anonymous profile.
+ * @param {Boolean} [overwriteAnonymous=false] - Overwrite anonymous profile if
  * already exists.
  */
 async function createProfile(name, isAnonymous = false, overwriteAnonymous = false) {
@@ -60,11 +60,12 @@ async function createProfile(name, isAnonymous = false, overwriteAnonymous = fal
   }
   try {
     const profile = await Profile.create({ name });
+    await profile.save();
     if (isAnonymous) {
-      this.anonymousProfile = profile;
-    } else this.personalProfile = profile;
-    this.save();
-    return;
+      this.anonymousProfile = profile._id;
+    } else this.personalProfile = profile._id;
+    await this.save();
+    return this;
   } catch (error) {
     throw error;
   }

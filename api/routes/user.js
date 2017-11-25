@@ -92,4 +92,17 @@ function getUser(req, res) {
 router.post('/signUp', signUp);
 router.post('/signIn', middlewares.auth, signIn);
 
+router.post('/profile', (req, res) => {
+  User.findOne({ user: req.user })
+    .then(user => user.createProfile(req.params.name))
+    .then((user) => {
+      if (req.params.nickname !== '') {
+        return user.createProfile(req.params.nickname, true);
+      }
+      return null;
+    })
+    .then(() => res.end())
+    .catch(() => res.status('422').send('An error ocurred while creating profile.'));
+});
+
 module.exports = router;
