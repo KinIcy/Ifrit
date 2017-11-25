@@ -4,15 +4,17 @@
  * @author Daniel Hernandez Cuero
  */
 
+require('dotenv');
+
 // include packages required.
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./routes');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const config = require('./config');
 
+// components
+const router = require('./routes');
 
 // app setup,
 const app = express();
@@ -20,7 +22,6 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/public`));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -31,13 +32,13 @@ app.use((req, res, next) => {
 // routes setup
 app.use('/api', router);
 
-
-mongoose.connect(config.db, { useMongoClient: true }, (err) => {
+mongoose.connect('mongodb://db:27017/Irim', { useMongoClient: true }, (err) => {
   if (err) {
-    return console.log(`Error al conectar a la base de datos: ${err}`);
+    process.stderr.write(`Error al conectar a la base de datos: ${err}\n`);
+  } else {
+    process.stdout.write('Conexión a la base de datos establecida...\n');
+    const listener = app.listen(process.env.PORT || '8080', () => {
+      process.stdout.write(`Servidor corriendo en  ${listener.address().port}\n`);
+    });
   }
-  console.log('Conexión a la base de datos establecida...');
-  const listener = app.listen(process.env.PORT || '8080', () => {
-    console.log(`Servidor corriendo en  ${listener.address().port}`);
-  });
 });

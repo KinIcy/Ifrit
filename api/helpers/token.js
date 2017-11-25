@@ -4,36 +4,33 @@
  */
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const config = require('../config');
 
+
+/**
+ * @todo Comment me.
+ * @param {*} user
+ */
 function createToken(user) {
   const payload = {
     sub: user.user,
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix(),
   };
-  return jwt.encode(payload, config.SECRET_TOKEN);
+  return jwt.encode(payload, process.env.TOKEN_SECRET || 'averyveryverysecretsecret');
 }
 
+/**
+ * @todo Comment me.
+ * @param {*} token
+ */
 function decodeToken(token) {
-  const decoded = new Promise((resolve, reject) => {
-    try {
-      const payload = jwt.decode(token, config.SECRET_TOKEN);
-      if (payload.exp <= moment().unix()) {
-        reject({
-          status: 401,
-          message: 'El token ha expirado',
-        });
-      }
-      resolve(payload.sub);
-    } catch (err) {
-      reject({
-        status: 500,
-        message: 'Invalid Token',
-      });
-    }
-  });
-  return decoded;
+  try {
+    const payload = jwt.decode(token, process.env.SECRET_TOKEN);
+    if (payload.exp <= moment().unix()) return [{ status: 401, message: 'El token ha expirado' }];
+    return [null, payload.sub];
+  } catch (err) {
+    return [{ status: 500, message: 'Invalid Token' }];
+  }
 }
 
 module.exports = {
