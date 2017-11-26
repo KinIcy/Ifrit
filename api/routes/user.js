@@ -1,9 +1,10 @@
 const router = require('express').Router();
 
-const middlewares = require('./middlewares');
+const { auth, checkProfile } = require('./middlewares');
 const tokenService = require('../helpers/token');
 
 const User = require('../models/user');
+const Profile = require('../models/profile');
 
 /**
  * @todo Comment me
@@ -90,19 +91,23 @@ function getUser(req, res) {
 
 /** @todo add missing routes */
 router.post('/signUp', signUp);
-router.post('/signIn', middlewares.auth, signIn);
+router.post('/signIn', auth, signIn);
 
 router.post('/profile', (req, res) => {
-  User.findOne({ user: req.user })
+  User.findById(req.user)
     .then(user => user.createProfile(req.params.name))
     .then((user) => {
-      if (req.params.nickname !== '') {
-        return user.createProfile(req.params.nickname, true);
-      }
+      if (req.params.nickname !== '') return user.createProfile(req.params.nickname, true);
       return null;
     })
     .then(() => res.end())
-    .catch(() => res.status('422').send('An error ocurred while creating profile.'));
+    .catch(error => res.status('422').send(`An error ocurred while creating user profile: ${error.message}`));
+});
+
+router.get('/profile/', checkProfile, (req, res) => {
+  Profile.findById(req.activeProfile).select('name').exec()
+    .then(profile => res.json(profile).end())
+    .catch(error => res.status('422').send(`An error ocurred while getting user profile: ${error.message}`));
 });
 
 module.exports = router;
