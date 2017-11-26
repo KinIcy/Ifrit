@@ -11,7 +11,7 @@ router.get('/:profile/', (req, res) => {
 
 router.post('/:profile/post', (req, res) => {
   Profile.findById(req.params.profile)
-    .then(profile => profile.createPost(req.body.content, req.user))
+    .then(profile => profile.createPost(req.body.content, req.activeProfile))
     .then(() => res.end())
     .catch(error => res.status(422).send(`An error ocurred while creating the post: ${error.message}`));
 });
