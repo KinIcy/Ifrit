@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <title>Ifrit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
+    <meta charset="utf-8">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
-    <link href="css/myprofile.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  	<!-- Iconos -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,32 +39,33 @@
 	              <div class="row">
 	                <div class="col-lg-12">
 	                  <div class="input-group form">
-	                       <input type="text" class="form-control" placeholder="Search...">
+	                       <input type="text" class="form-control" placeholder="Buscar...">
 	                       <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Search</button>
+	                         <button class="btn btn-primary" type="button">Buscar</button>
 	                       </span>
 	                  </div>
 	                </div>
 	              </div>
 	           </div>
-	           <div class="col-md-2">
-	              <div class="navbar navbar-inverse" role="banner">
-	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-	                    <ul class="nav navbar-nav">
-	                      <li class="dropdown">
-	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
-	                        <ul class="dropdown-menu animated fadeInUp">
-	                          <li><a href="profile.html">Profile</a></li>
-	                          <li><a href="login.html">Logout</a></li>
-	                        </ul>
-	                      </li>
-	                    </ul>
-	                  </nav>
-	              </div>
-	           </div>
+             <div class="col-md-2">
+               <div class="navbar navbar-inverse" role="banner">
+                   <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                     <ul class="nav navbar-nav">
+                       <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi Cuenta <b class="caret"></b></a>
+                         <ul class="dropdown-menu animated fadeInUp">
+                           <li><a href="myprofile.html">Perfil</a></li>
+                           <li><a href="login.html">Cerrar Sesion</a></li>
+                         </ul>
+                       </li>
+                     </ul>
+                   </nav>
+               </div>
+            </div>
 	        </div>
 	     </div>
 	</div>
+
 
   <!-- Cuadro de perfil-->
 
@@ -125,27 +135,140 @@
                 Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
               <br /><br />
               <div class="form-group">
-                <label>Comentarios</label>
+                <label>Comentar</label>
                 <textarea class="form-control" placeholder="..." rows="3"></textarea>
 
           </div>
           <div>
           <button class="btn btn-default btn-xs">
-          <i class="glyphicon glyphicon-thumbs-up"></i>Me gusta
+          <i class="glyphicon glyphicon-thumbs-up"></i> Me gusta
+          </button>
+          <button class="btn btn-default btn-xs" >
+          <i class="glyphicon glyphicon-thumbs-down"></i> No me gusta
           </button>
           <button class="btn btn-default btn-xs">
-          <i class="glyphicon glyphicon-thumbs-down"></i>No me gusta
+          <i class="glyphicon glyphicon-comment"></i> Comentar
           </button>
-          <button class="btn btn-default btn-xs">
-          <i class="glyphicon glyphicon-comment"></i>Comentar
+          <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" >
+          <i class="glyphicon glyphicon-eye-open"></i> Comentarios
           </button>
         </div>
+        <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">COMENTARIOS</h4>
+            </div>
+            <div class="modal-body">
+              <!-- Contenedor Principal -->
+          	<div class="comments-container">
+          		<ul id="comments-list" class="comments-list">
+          			<li>
+          				<div class="comment-main-level">
+          					<!-- Avatar -->
+          					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+          					<!-- Contenedor del Comentario -->
+          					<div class="comment-box">
+          						<div class="comment-head">
+          							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+          							<span>hace 20 minutos</span>
+          							<i class="fa fa-reply"></i>
+          							<i class="fa fa-heart"></i>
+          						</div>
+          						<div class="comment-content">
+          							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+
+                      </div>
+                      <div>
+                        <button class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-thumbs-up"></i> Me gusta
+                        </button>
+                        <button class="btn btn-default btn-xs" >
+                        <i class="glyphicon glyphicon-thumbs-down"></i> No me gusta
+                        </button>
+                        <button class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-comment"></i> Comentar
+                      </div>
+
+          					</div>
+          				</div>
+          				<!-- Respuestas de los comentarios -->
+          				<ul class="comments-list reply-list">
+          					<li>
+          						<!-- Avatar -->
+          						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+          						<!-- Contenedor del Comentario -->
+          						<div class="comment-box">
+          							<div class="comment-head">
+          								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+          								<span>hace 10 minutos</span>
+          								<i class="fa fa-reply"></i>
+          								<i class="fa fa-heart"></i>
+          							</div>
+          							<div class="comment-content">
+          								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+
+                        </div>
+          						</div>
+          					</li>
+
+          					<li>
+          						<!-- Avatar -->
+          						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+          						<!-- Contenedor del Comentario -->
+          						<div class="comment-box">
+          							<div class="comment-head">
+          								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+          								<span>hace 10 minutos</span>
+          								<i class="fa fa-reply"></i>
+          								<i class="fa fa-heart"></i>
+          							</div>
+          							<div class="comment-content">
+          								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+          							</div>
+          						</div>
+          					</li>
+          				</ul>
+          			</li>
+
+          			<li>
+          				<div class="comment-main-level">
+          					<!-- Avatar -->
+          					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+          					<!-- Contenedor del Comentario -->
+          					<div class="comment-box">
+          						<div class="comment-head">
+          							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+          							<span>hace 10 minutos</span>
+          							<i class="fa fa-reply"></i>
+          							<i class="fa fa-heart"></i>
+          						</div>
+          						<div class="comment-content">
+          							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+          						</div>
+          					</div>
+          				</div>
+          			</li>
+          		</ul>
+          	</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     </div>
   </div>
-
     </div>
     </div>
+  </div>
+  </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
