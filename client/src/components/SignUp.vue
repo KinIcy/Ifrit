@@ -34,7 +34,7 @@
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Fecha Nacimiento*</label>
-            <input type="date" class="form-control" v-model="inputDate" id="Fecha Nacimiento" placeholder="Introduce tu fecha">
+            <input type="date" class="form-control" v-model="inputDateOfBirth" id="Fecha Nacimiento" placeholder="Introduce tu fecha">
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Nickname*</label>
@@ -51,7 +51,7 @@
               </label>
             </div>
           </div>
-			  <button type="submit" @click="register" class="btn btn-default">Enviar</button>
+			  <button type="submit" @click="submit()" class="btn btn-default">Enviar</button>
         </form>
 		  </div>
 	  </div>
@@ -60,7 +60,7 @@
 
 <script>
 
-import AuthenticationService from '@/services/AuthenticationService'
+import Authentication from '@/services/Authentication'
 
 export default {
   data () {
@@ -71,26 +71,25 @@ export default {
       inputGenre: '',
       inputPasswordConf: '',
       inputFamilyName: '',
-      inputDate: '',
+      inputDateOfBirth: '',
       inputNickname: '',
       inputAboutMe: '',
       inputCheckBox: ''
     }
   },
   methods: {
-    async register () {
-      const response = await AuthenticationService.register({
+    submit () {
+      var credentials = {
         name: this.inputName,
         password: this.inputPassword,
         email: this.inputEmail,
         genre: this.inputGenre,
+        dateOfBirth: this.inputDateOfBirth,
         familyName: this.inputFamilyName,
         date: this.inputDate,
-        nickname: this.inputNickname,
         aboutMe: this.inputAboutMe
-      })
-      console.log(response.data)
-      localStorage.setItem('token', response.data.token)
+      }
+      Authentication.signUp(credentials, '/board')
     }
   }
 }

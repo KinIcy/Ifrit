@@ -20,22 +20,22 @@ export default {
       router.push(redirect)
     }
   },
-  async register (creds, redirect) {
+  async signUp (creds, redirect) {
     const response = await AuthenticationService.register({
-      name: creds.inputName,
-      password: creds.inputPassword,
-      email: creds.inputEmail,
-      genre: creds.inputGenre,
-      familyName: creds.inputFamilyName,
-      date: creds.inputDate,
-      nickname: creds.inputNickname,
-      aboutMe: creds.inputAboutMe
+      name: creds.name,
+      password: creds.password,
+      dateOfBirth: creds.dateOfBirth,
+      email: creds.email,
+      genre: creds.genre,
+      familyName: creds.familyName,
+      date: creds.date,
+      aboutMe: creds.aboutMe
     })
     console.log(response.data)
     localStorage.setItem('token', response.data.token)
     this.user.authenticated = true
     if (redirect) {
-      router.push('/')
+      router.push(redirect)
     }
   },
   // To log out, we just need to remove the token
