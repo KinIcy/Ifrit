@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 // routes setup
 app.use('/api', router);
 
-mongoose.connect('mongodb://db:27017/Irim', { useMongoClient: true }, (err) => {
+mongoose.connect('mongodb://db:27017/Ifrit', { useMongoClient: true }, (err) => {
   if (err) {
     process.stderr.write(`Error al conectar a la base de datos: ${err}\n`);
   } else {
