@@ -1,9 +1,9 @@
 <template>
-  <div>	
+  <div>
     <header>
 		  <div class="container">
 			  <h1>Registro</h1>
-		  </div>	
+		  </div>
 	  </header>
     <div class="row">
 		  <div class="container">
@@ -18,7 +18,11 @@
           </div>
           <div class="form-group col-md-6" >
 			      <label for="ejemplo_email_1">Genero*</label>
-			      <input type="text" class="form-control" v-model="inputGenre" id="Genero" placeholder="Genero">
+			      		<select required v-model="inputGenre">
+                <option value = 'm'>Masculino</option>
+                <option value = 'f'>Femenino</option>
+                <option value = '-'>No sabe / no responde</option>
+                </select>
 			    </div>
           <div class="form-group col-md-6">
 			      <label for="ejemplo_password_1">Confirmar Contraseña*</label>
@@ -47,7 +51,7 @@
           <div class="form-group col-md-12">
             <div class="checkbox">
               <label>
-                <input type="checkbox" v-model="inputCheckBox"> Aceptar las politicas 
+                <input type="checkbox" v-model="inputCheckBox"> Aceptar las politicas
               </label>
             </div>
           </div>
