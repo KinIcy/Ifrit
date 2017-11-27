@@ -11,12 +11,12 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
   text: String,
   date: Date,
-  arrayLike: [{
+  likes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'profile',
 
   }],
-  arrayNoLike: [{
+  unlikes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'profile',
   }],
