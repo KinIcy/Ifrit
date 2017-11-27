@@ -22,13 +22,11 @@ function signUp(req, res) {
     email: req.body.email,
     lastLogin: Date.now(),
   });
-  user.save(function (err) {
+  user.save((err) => {
     if (err) {
-      //handleError(res,err) 
       res.status(500).send({ message: `Error al crear el usuario: ${err}` });
-    }
-    else {
-      res.status(201).send({ token: tokenService.createToken(user), user: req.body.user });
+    } else {
+      res.status(200).send({ token: tokenService.createToken(user), user: req.body.user });
     }
   });
 }
