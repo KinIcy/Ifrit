@@ -10,11 +10,11 @@
         <form role="form">
           <div class="form-group col-md-6" >
             <label for="email">Email*</label>
-            <input type="email" class="form-control" v-model="inputEmail" id="email" placeholder="Introduce tu email">
+            <input type="email" class="form-control" v-model="inputEmail" id="email" required placeholder="Introduce tu email">
           </div>
           <div class="form-group col-md-6">
             <label for="ejemplo_password_1">Contraseña*</label>
-            <input type="password" class="form-control" v-model="inputPassword" id="Contraseña" placeholder="Contraseña">
+            <input type="password" class="form-control" v-model="inputPassword" required id="Contraseña" placeholder="Contraseña">
           </div>
           <div class="form-group col-md-6" >
 			      <label for="ejemplo_email_1">Genero*</label>
@@ -26,23 +26,23 @@
 			    </div>
           <div class="form-group col-md-6">
 			      <label for="ejemplo_password_1">Confirmar Contraseña*</label>
-			      <input type="password" class="form-control" v-model="inputPasswordConf" id="Confirmar Contraseña" placeholder="Confirmar Contraseña">
+			      <input type="password" class="form-control" v-model="inputPasswordConf" id="Confirmar Contraseña" required placeholder="Confirmar Contraseña">
 			    </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Nombre*</label>
-            <input type="text" class="form-control" v-model="inputName" id="Nombre" placeholder="Introduce tu nombre">
+            <input type="text" class="form-control" v-model="inputName" id="Nombre" required placeholder="Introduce tu nombre">
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Apellido*</label>
-            <input type="text" class="form-control" v-model="inputFamilyName" id="Apellido" placeholder="Introduce tu apellido">
+            <input type="text" class="form-control" v-model="inputFamilyName" id="Apellido" required placeholder="Introduce tu apellido">
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Fecha Nacimiento*</label>
-            <input type="date" class="form-control" v-model="inputDateOfBirth" id="Fecha Nacimiento" placeholder="Introduce tu fecha">
+            <input type="date" class="form-control" v-model="inputDateOfBirth" id="Fecha Nacimiento" required placeholder="Introduce tu fecha">
           </div>
           <div class="form-group col-md-6" >
             <label for="ejemplo_email_1">Nickname*</label>
-            <input type="text" class="form-control" v-model="inputNickname" id="Nickname" placeholder="Introduce tu Nickname">
+            <input type="text" class="form-control" v-model="inputNickname" id="Nickname" required placeholder="Introduce tu Nickname">
           </div>
           <div class="form-group col-md-12" >
             <label for="ejemplo_email_1">Acerca De Mi</label>

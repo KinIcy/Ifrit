@@ -10,7 +10,7 @@
             <div class="text-center">
               <form>
                 <div class="form-group">
-                  <label for="email">Correo</label>
+                  <label for="email">Usuario</label>
                   <input class="form-control" name="email" type="email" v-model="inputUserName" placeholder="Escribe tu correo">
                 </div>
                 <div class="form-group">
@@ -19,14 +19,14 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary" @click="submit()" type="submit">Ingresar</button>
-                </div>  
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
     </form>
-  </div>  
+  </div>
 </template>
 
 <script>
