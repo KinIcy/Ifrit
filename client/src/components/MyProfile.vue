@@ -1,6 +1,4 @@
 <template>
-  <div class="MyProfile">
-  </div>
 </template>
 
 <script>

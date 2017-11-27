@@ -29,7 +29,7 @@
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Mi Cuenta <b class="caret"></b></a>
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="myprofile.html">Perfil</a></li>
-	                          <li><a href="login.html"> Salr </a></li>
+	                          <li><a @click="logOut()"> Salir </a></li>
 	                        </ul>
 	                      </li>
 	                    </ul>
@@ -72,6 +72,21 @@
 		  			</div>
 		  		</div>
 
+      <div class="col-md-6">
+        <div class="content-box-header panel-heading">
+          <div class="panel-title ">Publicar</div>
+        </div>
+        <div class="content-box-large box-with-header">
+          <textarea class="form-control" placeholder="¿ Qué estas pensando ?" rows="3"></textarea>
+          <p>
+            <div class="btn btn-primary">
+              <i class="fa fa-save"></i>
+              Publicar
+            </div>
+          </p>
+        </div>
+  		</div>
+
 		  		<div class="col-md-6">
 		  			<div class="row">
 		  				<div class="col-md-12">
@@ -113,10 +128,17 @@
 </template>
 
 <script>
+
+import Authentication from '@/services/Authentication'
 export default {
   name: 'Board',
   data () {
     return {
+    }
+  },
+  methods: {
+    logOut () {
+      Authentication.logOut()
     }
   }
 }

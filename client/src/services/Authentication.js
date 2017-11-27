@@ -35,13 +35,14 @@ export default {
     localStorage.setItem('token', response.data.token)
     this.user.authenticated = true
     if (redirect) {
-      // Router.go(redirect)
+      router.push('/')
     }
   },
   // To log out, we just need to remove the token
-  logout () {
+  logOut () {
     localStorage.removeItem('token')
     this.user.authenticated = false
+    router.push('/')
   },
   checkAuth () {
     var jwt = localStorage.getItem('token')
