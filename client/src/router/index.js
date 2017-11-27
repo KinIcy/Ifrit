@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Register from '@/components/Register'
+import SignUp from '@/components/SignUp'
 import SignIn from '@/components/SignIn'
 import Board from '@/components/Board'
+import MyProfile from '@/components/MyProfile'
 
 Vue.use(Router)
 
@@ -15,9 +16,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: Register
+      path: '/SignUp',
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '/signIn',
@@ -28,6 +29,12 @@ export default new Router({
       path: '/board',
       name: 'Board',
       component: Board
-    }
+    },
+    {
+      path: '/MyProfile',
+      name: 'MyProfile',
+      component: MyProfile
+    },
+    { path: '*', redirect: '/' }
   ]
 })
