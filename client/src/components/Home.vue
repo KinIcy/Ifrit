@@ -9,13 +9,13 @@
         </div>
         <div class="col-md-12">
           <h1>
-              Irim
+              IFRIT
           </h1>
           <p class="tagline">
             Cualquier opinion puede ser intersante
           </p>
           <a class="btn btn-full" href="#/SignIn">Log-in</a>
-          <a class="btn btn-full" href="#/register">Registrarse</a>
+          <a class="btn btn-full" href="#/SignUp">Registrarse</a>
         </div>
     </div>
     </section>
@@ -29,7 +29,7 @@
     <section class="about" id="about">
       <div class="container text-center">
         <h2>
-            Sobre Irim
+            Sobre IFRIT
           </h2>
         <p>
           Voluptua scripserit per ad, laudem viderer sit ex. Ex alia corrumpit voluptatibus usu, sed unum convenire id. Ut cum nisl moderatius, per nihil dicant commodo an. Eum tacimates erroribus ad. Atqui feugiat euripidis ea pri, sed veniam tacimates ex. Menandri
